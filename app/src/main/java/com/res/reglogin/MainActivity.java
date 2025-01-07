@@ -46,10 +46,11 @@ public class MainActivity extends AppCompatActivity {
             builder=new AlertDialog.Builder(MainActivity.this);
             builder.setTitle("Register");
             builder.setMessage("Your email is "+email+"\n Are you sure you want to proceed further?");
-            builder.setPositiveButton("Submit", new DialogInterface.OnClickListener() {
+            builder.setPositiveButton("Register", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    dialog.dismiss();
+                    ToLogin=new Intent(MainActivity.this, LoginActivity.class);
+                    startActivity(ToLogin);
                 }
             });
             AlertDialog dialog=builder.create();
