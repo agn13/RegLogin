@@ -42,6 +42,7 @@
         android:inputType="textPassword" />
 
     <LinearLayout
+        android:id="@+id/Submit"
         android:layout_width="200sp"
         android:layout_height="50sp"
         android:layout_gravity="center"
