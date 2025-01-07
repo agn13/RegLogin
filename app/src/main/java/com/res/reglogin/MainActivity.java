@@ -19,36 +19,38 @@ public class MainActivity extends AppCompatActivity {
     EditText etPassword;
     String email;
     String password;
-    AlertDialog dialog;
-    AlertDialog.Builder builder;
+
     public void CheckValidity(){
+        AlertDialog.Builder builder;
         if(email.isEmpty() || password.isEmpty()){
             builder=new AlertDialog.Builder(MainActivity.this);
             builder.setTitle("Register");
             builder.setMessage("One or More fields are left blank?");
-            dialog.show();
             builder.setNegativeButton("Go Back", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     dialog.dismiss();
                 }
             });
-            AlertDialog dialog = builder.create(); // Create the dialog instance
+            AlertDialog dialog=builder.create();
             dialog.show();
+        }
+        else{
+            ProceedFurther();
         }
     }
     public void ProceedFurther(){
+            AlertDialog.Builder builder;
             builder=new AlertDialog.Builder(MainActivity.this);
             builder.setTitle("Register");
-            builder.setMessage("Your email is "+email+"/n Are you sure you want to proceed further?");
-            dialog.show();
+            builder.setMessage("Your email is "+email+"\n Are you sure you want to proceed further?");
             builder.setPositiveButton("Submit", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     dialog.dismiss();
                 }
             });
-            AlertDialog dialog = builder.create(); // Create the dialog instance
+            AlertDialog dialog=builder.create();
             dialog.show();
     }
     @Override
@@ -59,9 +61,9 @@ public class MainActivity extends AppCompatActivity {
         etEmail=findViewById(R.id.etEmail);
         etPassword=findViewById(R.id.etPassword);
         Submit.setOnClickListener(v->{
+            email = etEmail.getText().toString().trim();
+            password = etPassword.getText().toString().trim();
             CheckValidity();
-            email=etEmail.getText().toString().replace("\\s+"," ").trim();
-            ProceedFurther();
         });
 
     }
