@@ -1,6 +1,7 @@
 package com.res.reglogin;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     EditText etPassword;
     String email;
     String password;
+    Intent ToLogin;
 
     public void CheckValidity(){
         AlertDialog.Builder builder;
