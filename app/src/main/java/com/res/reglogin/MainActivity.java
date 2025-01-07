@@ -32,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
                     dialog.dismiss();
                 }
             });
+            AlertDialog dialog = builder.create(); // Create the dialog instance
+            dialog.show();
         }
     }
     public void ProceedFurther(){
@@ -45,6 +47,8 @@ public class MainActivity extends AppCompatActivity {
                     dialog.dismiss();
                 }
             });
+            AlertDialog dialog = builder.create(); // Create the dialog instance
+            dialog.show();
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
