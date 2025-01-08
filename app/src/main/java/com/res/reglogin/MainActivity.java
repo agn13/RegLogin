@@ -14,17 +14,19 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
     LinearLayout Submit;
-    EditText etEmail;
+    EditText etUsername;
     EditText etPassword;
-    String email;
-    String password;
+    String Username;
+    String Password;
     Intent ToLogin;
 
     public void CheckValidity(){
         AlertDialog.Builder builder;
-        if(email.isEmpty() || password.isEmpty()){
+        if(Username.isEmpty() || Password.isEmpty()){
             builder=new AlertDialog.Builder(MainActivity.this);
             builder.setTitle("Register");
             builder.setMessage("One or More fields are left blank?");
@@ -45,11 +47,13 @@ public class MainActivity extends AppCompatActivity {
             AlertDialog.Builder builder;
             builder=new AlertDialog.Builder(MainActivity.this);
             builder.setTitle("Register");
-            builder.setMessage("Your email is "+email+"\n Are you sure you want to proceed further?");
+            builder.setMessage("Your Username is "+Username+"\n Are you sure you want to proceed further?");
             builder.setPositiveButton("Register", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     ToLogin=new Intent(MainActivity.this, LoginActivity.class);
+                    ToLogin.putExtra("Incomingusername",Username);
+                    ToLogin.putExtra("Incomingpassword",Password);
                     startActivity(ToLogin);
                 }
             });
@@ -61,11 +65,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Submit=findViewById(R.id.Submit);
-        etEmail=findViewById(R.id.etEmail);
+        etUsername=findViewById(R.id.etUsername);
         etPassword=findViewById(R.id.etPassword);
         Submit.setOnClickListener(v->{
-            email = etEmail.getText().toString().trim();
-            password = etPassword.getText().toString().trim();
+            Username = etUsername.getText().toString().replaceAll("\\s"," ").trim();
+            Password = etPassword.getText().toString();
             CheckValidity();
         });
 
